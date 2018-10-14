@@ -24,4 +24,8 @@ export class BikeService {
     return this._httpClient.post('/server/api/v1/bikes', bike, httpOptions);
   }
 
+  editBike(bike, id) {
+    return this._httpClient.put('/server/api/v1/bikes/' + id, bike, httpOptions);
+  }
+
 }

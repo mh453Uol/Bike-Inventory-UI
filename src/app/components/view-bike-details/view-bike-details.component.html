@@ -1,3 +1,71 @@
-<p>
-  view-bike-details works!
-</p>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+
+  <div class="form-group">
+    <label>Name:</label>
+    <input formControlName="name" type="text" class="form-control" [class.is-invalid]="registerForm.controls.name.errors">
+    <div class="invalid-feedback">
+      Name is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Name:</label>
+    <input formControlName="email" type="text" class="form-control" [class.is-invalid]="registerForm.controls.email.errors">
+    <div class="invalid-feedback" *ngIf="registerForm.controls.email.errors?.required">
+      Email is required.
+    </div>
+    <div class="invalid-feedback" *ngIf="registerForm.controls.email.errors?.email">
+      Email layout is invalid.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Phone:</label>
+    <input formControlName="phone" type="number" class="form-control" [class.is-invalid]="registerForm.controls.phone.errors">
+    <div class="invalid-feedback">
+      Phone is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Model:</label>
+    <input formControlName="model" type="text" class="form-control" [class.is-invalid]="registerForm.controls.model.errors">
+    <div class="invalid-feedback">
+      Model is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Serial Number:</label>
+    <input formControlName="serialNumber" type="text" class="form-control" [class.is-invalid]="registerForm.controls.serialNumber.errors">
+    <div class="invalid-feedback">
+      Serial Number is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Purchase price (£):</label>
+    <input formControlName="purchasePrice" type="number" class="form-control" [class.is-invalid]="registerForm.controls.purchasePrice.errors">
+    <div class="invalid-feedback">
+      Purchase price is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Purchase date:</label>
+    <input formControlName="purchaseDate" bsDatepicker [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" type="text" class="form-control"
+      [class.is-invalid]="registerForm.controls.purchaseDate.errors">
+    <div class="invalid-feedback">
+      Purchase date is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-check">
+      <input formControlName="contact" type="checkbox" class="form-check-input">
+      <label class="form-check-label">Can we contact you</label>
+    </div>
+  </div>
+
+  <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary">Edit</button>
+</form>

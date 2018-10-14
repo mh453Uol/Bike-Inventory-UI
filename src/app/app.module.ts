@@ -10,6 +10,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { ViewBikeDetailsComponent } from './components/view-bike-details/view-bike-details.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ViewBikeDetailsComponent } from './components/view-bike-details/view-bi
     ReactiveFormsModule,
   ],
   providers: [
-    BikeService
+    BikeService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
