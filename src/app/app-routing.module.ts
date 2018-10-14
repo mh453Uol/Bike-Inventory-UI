@@ -1,9 +1,10 @@
+import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/admin', pathMatch: 'full' },
+    { path: '', component: HomeComponent },
     { path: 'admin', component: AdminComponent },
 ];
 
