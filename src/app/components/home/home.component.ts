@@ -1,6 +1,8 @@
 import { BikeService } from './../../services/bike.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { throwError } from 'rxjs';
+
 
 @Component({
   selector: 'app-home',
@@ -10,6 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class HomeComponent implements OnInit {
 
   registerForm: FormGroup;
+  addedBike = false;
 
   constructor(private _bikeService: BikeService,
     private _fb: FormBuilder) {
@@ -30,6 +33,16 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit() {
+    if (this.registerForm.valid) {
+      this._bikeService.addBike(this.registerForm.value).subscribe(
+        data => { this.registerForm.reset(); return true; },
+        error => throwError(error),
+        () => { this.addedBike = true; }
+      );
+    }
+    console.log(this.registerForm.value);
+  }
 
 
 }
