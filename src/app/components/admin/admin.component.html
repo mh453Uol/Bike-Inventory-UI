@@ -1,8 +1,28 @@
-<div *ngFor="let bikes of bikes">
-  <ul>
-    <li>{{bikes.name}}</li>
-    <li>{{bikes.email}}</li>
-    <li>{{bikes.model}}</li>
-    <li>{{bikes.purchasePrice}}</li>
-  </ul>
-</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Owner Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Model</th>
+      <th scope="col">Purchase Price</th>
+      <th scope="col">Purchase Date</th>
+      <th scope="col">Serial Number</th>
+      <th scope="col">Contactable</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody *ngIf="bikes">
+    <tr *ngFor="let bike of bikes">
+      <td>{{bike.name}}</td>
+      <td>{{bike.email}}</td>
+      <td>{{bike.phone}}</td>
+      <td>{{bike.model}}</td>
+      <td>{{bike.purchasePrice | currency:'GBP'}}</td>
+      <td>{{bike.purchaseDate | date:'longDate' }}</td>
+      <td>{{bike.serialNumber }}</td>
+      <td>{{bike.contact ? 'Yes' : 'No' }}</td>
+      <td><a routerLink="/bike/{{bike.id}}">Edit</a></td>
+    </tr>
+  </tbody>
+</table>
